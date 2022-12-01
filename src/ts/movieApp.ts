@@ -1,3 +1,4 @@
+import { jest } from "@jest/globals";
 import { IMovie } from "./models/Movie";
 import { getData } from "./services/movieservice";
 
@@ -7,7 +8,7 @@ export const init = () => {
   let form = document.getElementById("searchForm") as HTMLFormElement;
   form.addEventListener("submit", (e: SubmitEvent) => {
     e.preventDefault();
-    handleSubmit();
+    exports.handleSubmit();
   });
 };
 

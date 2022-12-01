@@ -1,5 +1,6 @@
-import { IOmdbResponse } from "./../models/IOmdbResponse";
-import { IMovie } from "./../models/Movie";
+import { IOmdbResponse } from "../models/IOmdbResponse";
+import { IMovie } from "../models/Movie";
+import { jest } from "@jest/globals";
 import axios from "axios";
 
 export const getData = async (searchText: string): Promise<IMovie[]> => {
@@ -12,3 +13,5 @@ export const getData = async (searchText: string): Promise<IMovie[]> => {
       return [];
     });
 };
+
+//
