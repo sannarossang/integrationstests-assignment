@@ -8,11 +8,6 @@ export async function getData(searchText: string): Promise<IMovie[]> {
   });
 }
 
-//if(..inparameter..)
-//resolve(lista eller ngt)
-//else(...)
-//reject(skicka tillbaka ett värde)
-
 export const mockData: IMovie[] = [
   {
     Title: "The Lion King",

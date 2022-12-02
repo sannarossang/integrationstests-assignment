@@ -13,5 +13,3 @@ export const getData = async (searchText: string): Promise<IMovie[]> => {
       return [];
     });
 };
-
-//
