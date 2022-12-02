@@ -1,12 +1,20 @@
 import { IMovie } from "../../models/Movie";
 import axios from "axios";
 
-export async function getData(searchText: string): Promise<IMovie[]> {
+export const getData = async (searchText: string): Promise<IMovie[]> => {
   return new Promise((resolve, reject) => {
-    if (searchText) resolve(mockData);
-    else reject();
+    if (searchText !== "") {
+      if (searchText !== "search not found") {
+        resolve(mockData);
+        console.log(searchText);
+        console.log("before else");
+      } else {
+        console.log("inside else");
+        resolve([]);
+      }
+    } else reject("Du måste söka efter en film!");
   });
-}
+};
 
 export const mockData: IMovie[] = [
   {
