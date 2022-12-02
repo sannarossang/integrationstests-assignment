@@ -29,9 +29,11 @@ export async function handleSubmit() {
       console.log(movies);
     } else {
       exports.displayNoResult(container);
+      console.log(movies);
     }
   } catch {
     exports.displayNoResult(container);
+    console.log(movies);
   }
 }
 

@@ -10,6 +10,10 @@ import * as movieAppfunctions from "../ts/movieApp";
 jest.mock("../ts/services/movieservice.ts");
 
 describe("init", () => {
+  beforeEach(() => {
+    jest.resetModules();
+    jest.restoreAllMocks();
+  });
   test("should be able to call function handleSubmit", () => {
     //Arrange
     document.body.innerHTML = `<form id="searchForm">
@@ -58,7 +62,7 @@ describe("handleSubmit", () => {
     await movieAppfunctions.handleSubmit();
 
     //Assert
-    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalled();
 
     //Empty code
     document.body.innerHTML = "";
