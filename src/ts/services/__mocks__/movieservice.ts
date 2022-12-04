@@ -4,10 +4,9 @@ import axios from "axios";
 export const getData = async (searchText: string): Promise<IMovie[]> => {
   return new Promise((resolve, reject) => {
     if (searchText !== "") {
-      if (searchText !== "search not found") {
+      //I min andra if hade det varit fint med en .find för att jämföra searchText mot min lista
+      if (searchText !== "Batman or any other movie thats not in the list") {
         resolve(mockData);
-        console.log(searchText);
-        console.log("before else");
       } else {
         console.log("inside else");
         resolve([]);

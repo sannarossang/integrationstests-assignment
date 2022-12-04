@@ -62,35 +62,36 @@ describe("handleSubmit", () => {
     await movieAppfunctions.handleSubmit();
 
     //Assert
-    expect(spy).toHaveBeenCalled();
+    expect(spy).toHaveBeenCalledTimes(1);
 
     //Empty code
     document.body.innerHTML = "";
   });
 
-  test("should call function displayNoResult() if searchtext not found and list not contains anything", async () => {
+  test("should call function displayNoResult() if list is empty", async () => {
     //Arrange
     document.body.innerHTML = `<form id="searchForm">
      <input type="text" id="searchText" placeholder="Skriv titel här" />
      <button type="submit" id="search">Sök</button>
    </form><div id="movie-container"></div>
    `;
-
-    (document.getElementById("searchText") as HTMLInputElement).value = "";
-
-    let spy = jest.spyOn(movieAppfunctions, "createHtml").mockReturnValue();
+    (document.getElementById("searchText") as HTMLInputElement).value =
+      "Batman or any other movie thats not in the list";
+    let spy = jest
+      .spyOn(movieAppfunctions, "displayNoResult")
+      .mockReturnValue();
 
     //Act
     await movieAppfunctions.handleSubmit();
 
     //Assert
-    expect(spy).toHaveBeenCalledTimes(0);
+    expect(spy).toHaveBeenCalledTimes(1);
 
     //Empty code
     document.body.innerHTML = "";
   });
 
-  test("should call function displayNoResult() if search not found", async () => {
+  test("should call function displayNoResult() if something went wrong with movieservice-service", async () => {
     //Arrange
     document.body.innerHTML = `<form id="searchForm">
     <input type="text" id="searchText" placeholder="Skriv titel här" />
@@ -98,8 +99,7 @@ describe("handleSubmit", () => {
   </form><div id="movie-container"></div>
   `;
 
-    (document.getElementById("searchText") as HTMLInputElement).value =
-      "search not found";
+    (document.getElementById("searchText") as HTMLInputElement).value = "";
 
     let spy = jest
       .spyOn(movieAppfunctions, "displayNoResult")
